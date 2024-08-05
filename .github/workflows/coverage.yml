@@ -30,11 +30,13 @@ jobs:
         id: cv-parallel
         uses: coverallsapp/github-action@v2
         with:
+          base-path: /app/src/main/java
           compare-ref: main
           file: /Users/runner/work/android-patch/android-patch/app/build/reports/coverage/test/release/report.xml
           format: jacoco
-      - name: Coveralls Finished
-        id: cv-finished
-        uses: coverallsapp/github-action@v2
-        with:
-          parallel-finished: true
+          parallel: false
+      # - name: Coveralls Finished
+      #   id: cv-finished
+      #   uses: coverallsapp/github-action@v2
+      #   with:
+      #     parallel-finished: true
