@@ -24,4 +24,10 @@ class StringCheckTest {
         val result = stringUtils.capitalizeFirstLetter("")
         assertEquals("", result)
     }
+
+    @Test
+    fun removeWhitespace_returnString() {
+        val result = stringUtils.removeWhitespace("test str")
+        assertEquals("teststr", result)
+    }
 }
