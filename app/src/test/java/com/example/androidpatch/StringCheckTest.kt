@@ -26,6 +26,12 @@ class StringCheckTest {
     }
 
     @Test
+    fun capitalizeFirstLetter_emptyString_returnsString() {
+        val result = stringUtils.capitalizeFirstLetter("abcd")
+        assertEquals("Abcd", result)
+    }
+
+    @Test
     fun countVowels_returnVowelsCount() {
         val result = stringUtils.countVowels("abcd")
         assertEquals(1, result)
