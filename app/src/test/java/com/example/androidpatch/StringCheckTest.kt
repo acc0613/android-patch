@@ -26,6 +26,12 @@ class StringCheckTest {
     }
 
     @Test
+    fun countVowels_returnVowelsCount() {
+        val result = stringUtils.countVowels("abcd")
+        assertEquals(1, result)
+    }
+
+    @Test
     fun removeWhitespace_returnString() {
         val result = stringUtils.removeWhitespace("test str")
         assertEquals("teststr", result)
