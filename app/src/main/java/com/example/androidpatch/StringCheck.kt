@@ -25,7 +25,7 @@ class StringCheck {
 
     // @Generated("exclude from code coverage")
     fun removeWhitespace(input: String): String {
-        return input.replace(" ", "")
+        return input.replace(" ", "a")
     }
 
     fun removeWhitespace1(input: String): String {
