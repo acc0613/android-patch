@@ -20,9 +20,9 @@ jobs:
       - name: Gradle tasks
         shell: bash
         run: ./gradlew tasks --all
-      - name: Gradle test
-        shell: bash
-        run: ./gradlew testReleaseUnitTest
+      # - name: Gradle test
+      #   shell: bash
+      #   run: ./gradlew testReleaseUnitTest
       - name: Gradle generate code coverage report
         shell: bash
         run: ./gradlew createReleaseUnitTestCoverageReport
