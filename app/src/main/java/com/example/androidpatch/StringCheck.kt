@@ -23,7 +23,7 @@ class StringCheck {
         return input.count { it in vowels }
     }
 
-    @Generated("exclude from code coverage")
+    // @Generated("exclude from code coverage")
     fun removeWhitespace(input: String): String {
         return input.replace(" ", "a")
     }
