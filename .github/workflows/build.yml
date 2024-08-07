@@ -1,0 +1,31 @@
+name: PR code coverage for main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      - name: Gradle generate code coverage report
+        shell: bash
+        run: ./gradlew createReleaseUnitTestCoverageReport
+      - name: Coveralls Parallel
+        id: cv-parallel
+        uses: coverallsapp/github-action@v2
+        with:
+          file: /Users/runner/work/android-patch/android-patch/app/build/reports/coverage/test/release/report.xml
+          format: jacoco
+          parallel: false
