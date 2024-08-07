@@ -38,6 +38,12 @@ class StringCheckTest {
     }
 
     @Test
+    fun removeWhitespace_returnString() {
+        val result = stringUtils.removeWhitespace("test str")
+        assertEquals("testastr", result)
+    }
+
+    @Test
     fun removeWhitespace1_returnString() {
         val result = stringUtils.removeWhitespace1("test str")
         assertEquals("teststr", result)
