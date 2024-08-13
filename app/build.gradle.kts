@@ -4,6 +4,15 @@ plugins {
     jacoco
 }
 
+// Register the main JaCoCo task to later depend on the per-variant tasks
+val jacocoTestReport = tasks.register("jacocoTestReport")
+
+tasks.withType<Test> {
+    configure<JacocoTaskExtension> {
+        isIncludeNoLocationClasses = true
+    }
+}
+
 android {
     namespace = "com.example.androidpatch"
     compileSdk = 34
@@ -56,15 +65,15 @@ android {
 //    }
 //}
 
-tasks.withType<JacocoReport> {
-    afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.map {
-            fileTree(it).apply {
-                exclude("com.example.androidpatch.theme")
-            }
-        }))
-    }
-}
+//tasks.withType<JacocoReport> {
+//    afterEvaluate {
+//        classDirectories.setFrom(files(classDirectories.files.map {
+//            fileTree(it).apply {
+//                exclude("com.example.androidpatch.theme")
+//            }
+//        }))
+//    }
+//}
 
 dependencies {
 
