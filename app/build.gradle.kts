@@ -28,12 +28,41 @@ android {
             enableUnitTestCoverage = true
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+//tasks.withType<JacocoCoverageVerification> {
+//    violationRules {
+//        rule {
+//            limit {
+//                minimum = BigDecimal(0.62)
+//            }
+//        }
+//    }
+//
+//    afterEvaluate {
+//        classDirectories.setFrom(files(classDirectories.files.map {
+//            fileTree(it).apply {
+//                exclude("com/generate/**")
+//            }
+//        }))
+//    }
+//}
+
+tasks.withType<JacocoReport> {
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.map {
+            fileTree(it).apply {
+                exclude("com/example/androidpatch/theme")
+            }
+        }))
     }
 }
 
