@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-//    jacoco
+    jacoco
 }
 
 //// Register the main JaCoCo task to later depend on the per-variant tasks
@@ -12,6 +12,14 @@ plugins {
 //        isIncludeNoLocationClasses = true
 //    }
 //}
+
+//val exclusions = listOf(
+//    "**/R.class",
+//    "**/R\$*.class",
+//    "**/BuildConfig.*",
+//    "**/Manifest*.*",
+//    "**/*Test*.*"
+//)
 
 android {
     namespace = "com.example.androidpatch"
@@ -44,6 +52,13 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+tasks.withType(Test::class) {
+    configure<JacocoTaskExtension> {
+        isIncludeNoLocationClasses = true
+        excludes = listOf("com.example.androidpatch.theme")
     }
 }
 
