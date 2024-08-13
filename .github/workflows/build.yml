@@ -19,6 +19,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
+      - name: Gradle tasks
+        shell: bash
+        run: ./gradlew tasks --all
       - name: Gradle generate code coverage report
         shell: bash
         run: ./gradlew createReleaseUnitTestCoverageReport
