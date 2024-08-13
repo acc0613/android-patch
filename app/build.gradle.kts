@@ -60,7 +60,7 @@ tasks.withType<JacocoReport> {
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.map {
             fileTree(it).apply {
-                exclude("com/example/androidpatch/theme/**")
+                exclude("com.example.androidpatch.theme")
             }
         }))
     }
