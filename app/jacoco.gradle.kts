@@ -1,7 +1,8 @@
 apply(plugin = "jacoco")
 
 tasks.register<JacocoReport>("jacocoTestReport") {
-    dependsOn(tasks["testReleaseUnitTest"])
+    // dependsOn(tasks["testReleaseUnitTest"])
+    dependsOn(tasks.named("testReleaseUnitTest"))
 
     reports {
         xml.required.set(true)
