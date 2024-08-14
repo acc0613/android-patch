@@ -41,8 +41,3 @@ jobs:
       #     file: /Users/runner/work/android-patch/android-patch/app/build/reports/coverage/test/release/report.xml
       #     format: jacoco
       #     parallel: false
-      # - name: Coveralls Finished
-      #   id: cv-finished
-      #   uses: coverallsapp/github-action@v2
-      #   with:
-      #     parallel-finished: true

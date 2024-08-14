@@ -15,12 +15,14 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "**/Manifest*.*",
         "**/*Test*.*"
     )
-    val debugTree = fileTree(mapOf("dir" to "$buildDir/intermediates/javac/debug", "excludes" to fileFilter))
+
+    val dir = layout.buildDirectory.get()
+    val debugTree = fileTree(mapOf("dir" to "$dir/intermediates/javac/debug", "excludes" to fileFilter))
     val mainSrc = "$projectDir/src/main/java"
 
     sourceDirectories.setFrom(files(mainSrc))
     classDirectories.setFrom(files(debugTree))
-    executionData.setFrom(fileTree(mapOf("dir" to "$buildDir", "includes" to listOf(
+    executionData.setFrom(fileTree(mapOf("dir" to "$dir", "includes" to listOf(
         "jacoco/testDebugUnitTest.exec",
         "outputs/code-coverage/connected/*coverage.ec"
     ))))
