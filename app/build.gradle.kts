@@ -55,28 +55,10 @@ android {
     }
 }
 
-tasks.withType(Test::class) {
-    configure<JacocoTaskExtension> {
-        isIncludeNoLocationClasses = true
-        excludes = listOf("com.example.androidpatch.theme")
-    }
-}
-
-//tasks.withType<JacocoCoverageVerification> {
-//    violationRules {
-//        rule {
-//            limit {
-//                minimum = BigDecimal(0.62)
-//            }
-//        }
-//    }
-//
-//    afterEvaluate {
-//        classDirectories.setFrom(files(classDirectories.files.map {
-//            fileTree(it).apply {
-//                exclude("com/generate/**")
-//            }
-//        }))
+//tasks.withType(Test::class) {
+//    configure<JacocoTaskExtension> {
+//        isIncludeNoLocationClasses = true
+//        excludes = listOf("com.example.androidpatch.theme")
 //    }
 //}
 
@@ -90,6 +72,8 @@ tasks.withType(Test::class) {
 //    }
 //}
 
+
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -102,3 +86,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
+apply("$rootDir/app/jacoco.gradle.kts")
