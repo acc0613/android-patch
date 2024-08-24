@@ -1,17 +1,8 @@
-import java.util.Locale
-//apply("$rootDir/app/jacoco.gradle.kts")
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     jacoco
-    // id("com.github.nbaztec.coveralls-jacoco") version "1.2.20"
 }
-
-//jacoco {
-//    toolVersion = "0.8.7"
-//    reportsDirectory.set(layout.buildDirectory.dir("jcc-report"))
-//}
 
 val exclusions = listOf(
     "**/R.class",
@@ -45,10 +36,6 @@ android {
             enableUnitTestCoverage = true
         }
     }
-//
-//    testOptions {
-//
-//    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -58,16 +45,12 @@ android {
         jvmTarget = "1.8"
     }
 
-//    tasks.withType<Test> {
-//        useJUnitPlatform() // Note: automatically generated when creating project
-//    }
-
     tasks.register<JacocoReport>("JacocoCodeCoverage") {
         // Depend on unit tests and Android tests tasks
         dependsOn("testReleaseUnitTest")
         // Set task grouping and description
         group = "Reporting"
-        description = "Execute UI and unit tests, generate and combine Jacoco coverage report"
+        description = "Execute unit tests, generate and combine Jacoco coverage report"
         // Configure reports to generate both XML and HTML formats
         reports {
             xml.required.set(true)
@@ -91,12 +74,12 @@ android {
     }
 }
 
-//tasks.withType(Test::class) {
-//    configure<JacocoTaskExtension> {
-//        isIncludeNoLocationClasses = true
-//        excludes = listOf("jdk.internal.*")
-//    }
-//}
+tasks.withType(Test::class) {
+    configure<JacocoTaskExtension> {
+        isIncludeNoLocationClasses = true
+        excludes = listOf("com.example.androidpatch.theme")
+    }
+}
 
 dependencies {
 
@@ -110,5 +93,3 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
-
-// apply("$rootDir/app/jacoco.gradle.kts")
