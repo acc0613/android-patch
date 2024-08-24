@@ -72,7 +72,37 @@ android {
 //    }
 //}
 
-
+//tasks {
+//    register("Jacoco", JacocoReport::class) {
+//        val jacocoReportTask = this
+//
+//        group = "Coverage reports"
+//        val projects = coveredProjects
+//
+//        // Here we depend on the jacocoReport task that we created before
+//        val subTasks = projects.map { it.task<JacocoReport>("jacocoReport") }
+//        dependsOn(subTasks)
+//
+//        val subSourceDirs = subTasks.map { files(it.sourceDirectories) }
+//        additionalSourceDirs.setFrom(subSourceDirs)
+//        sourceDirectories.setFrom(subSourceDirs)
+//
+//        classDirectories.setFrom(subTasks.map { files(it.classDirectories) })
+//        executionData.setFrom(subTasks.map { files(it.executionData) })
+//
+//        reports {
+//            html.isEnabled = true
+//            html.destination = file("$buildDir/reports/jacoco/html")
+//
+//            xml.isEnabled = true
+//            xml.destination = file("$buildDir/reports/jacoco/jacocoFullReport.xml")
+//        }
+//
+//        doFirst {
+//            executionData.setFrom(files(executionData.filter { it.exists() }))
+//        }
+//    }
+//}
 
 dependencies {
 
