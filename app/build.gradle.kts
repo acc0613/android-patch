@@ -1,5 +1,5 @@
 import java.util.Locale
-// apply("$rootDir/app/jacoco.gradle.kts")
+ apply("$rootDir/app/jacoco.gradle.kts")
 
 plugins {
     alias(libs.plugins.android.application)
@@ -8,10 +8,10 @@ plugins {
     // id("com.github.nbaztec.coveralls-jacoco") version "1.2.20"
 }
 
-jacoco {
-    toolVersion = "0.8.7"
-    reportsDirectory.set(layout.buildDirectory.dir("jcc-report"))
-}
+//jacoco {
+//    toolVersion = "0.8.7"
+//    reportsDirectory.set(layout.buildDirectory.dir("jcc-report"))
+//}
 
 val exclusions = listOf(
     "**/R.class",
@@ -56,6 +56,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform() // Note: automatically generated when creating project
     }
 }
 
