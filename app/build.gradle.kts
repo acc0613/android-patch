@@ -12,8 +12,8 @@ val exclusions = listOf(
     "**/*Test*.*",
     "com/example/androidpatch/theme/*",
     "com/example/androidpatch/theme/**",
-    "**/com/example/androidpatch/theme/*",
-    "**/com/example/androidpatch/theme/**"
+    "**/com/example/androidpatch/theme/*"
+    //"**/com/example/androidpatch/theme/**"
 )
 
 android {
