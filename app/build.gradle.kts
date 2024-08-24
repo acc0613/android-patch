@@ -1,5 +1,5 @@
 import java.util.Locale
-apply(from = "../jacoco.gradle.kts")
+apply("$rootDir/app/jacoco.gradle.kts")
 
 plugins {
     alias(libs.plugins.android.application)
