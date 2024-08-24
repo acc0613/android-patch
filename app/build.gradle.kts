@@ -8,6 +8,11 @@ plugins {
     // id("com.github.nbaztec.coveralls-jacoco") version "1.2.20"
 }
 
+jacoco {
+    toolVersion = "0.8.7"
+    reportsDirectory.set(layout.buildDirectory.dir("jcc-report"))
+}
+
 val exclusions = listOf(
     "**/R.class",
     "**/R\$*.class",
