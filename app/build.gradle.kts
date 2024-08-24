@@ -9,7 +9,11 @@ val exclusions = listOf(
     "**/R\$*.class",
     "**/BuildConfig.*",
     "**/Manifest*.*",
-    "**/*Test*.*"
+    "**/*Test*.*",
+    "com/example/androidpatch/theme/*",
+    "com/example/androidpatch/theme/**",
+    "**/com/example/androidpatch/theme/*",
+    "**/com/example/androidpatch/theme/**"
 )
 
 android {
@@ -74,12 +78,12 @@ android {
     }
 }
 
-tasks.withType(Test::class) {
-    configure<JacocoTaskExtension> {
-        isIncludeNoLocationClasses = true
-        excludes = listOf("com.example.androidpatch.theme")
-    }
-}
+//tasks.withType(Test::class) {
+//    configure<JacocoTaskExtension> {
+//        isIncludeNoLocationClasses = true
+//        excludes = listOf("com.example.androidpatch.theme")
+//    }
+//}
 
 dependencies {
 
