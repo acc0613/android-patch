@@ -1,9 +1,20 @@
+import java.util.Locale
+apply(from = "../jacoco.gradle.kts")
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     jacoco
-    id("com.github.nbaztec.coveralls-jacoco") version "1.2.20"
+    // id("com.github.nbaztec.coveralls-jacoco") version "1.2.20"
 }
+
+val exclusions = listOf(
+    "**/R.class",
+    "**/R\$*.class",
+    "**/BuildConfig.*",
+    "**/Manifest*.*",
+    "**/*Test*.*"
+)
 
 android {
     namespace = "com.example.androidpatch"
@@ -29,6 +40,10 @@ android {
             enableUnitTestCoverage = true
         }
     }
+//
+//    testOptions {
+//
+//    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -38,6 +53,15 @@ android {
         jvmTarget = "1.8"
     }
 }
+
+//tasks.withType(Test::class) {
+//    configure<JacocoTaskExtension> {
+//        isIncludeNoLocationClasses = true
+//        excludes = listOf("jdk.internal.*")
+//    }
+//}
+
+
 
 dependencies {
 
