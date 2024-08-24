@@ -29,9 +29,12 @@ jobs:
       - name: Gradle unit test
         shell: bash
         run: ./gradlew testReleaseUnitTest
-      - name: Gradle Jacoco report
+      # - name: Gradle Jacoco report
+      #   shell: bash
+      #   run: ./gradlew jacocoTestReport
+      - name: Gradle Jacoco code cov
         shell: bash
-        run: ./gradlew jacocoTestReport
+        run: ./gradlew JacocoCodeCoverage
       - name: Coveralls Parallel
         id: cv-parallel
         uses: coverallsapp/github-action@v2
