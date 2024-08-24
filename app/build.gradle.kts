@@ -10,10 +10,7 @@ val exclusions = listOf(
     "**/BuildConfig.*",
     "**/Manifest*.*",
     "**/*Test*.*",
-    "com/example/androidpatch/theme/*",
-    "com/example/androidpatch/theme/**",
     "**/com/example/androidpatch/theme/*"
-    //"**/com/example/androidpatch/theme/**"
 )
 
 android {
