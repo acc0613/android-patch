@@ -41,6 +41,6 @@ jobs:
         with:
           base-path: /app/src/main/java
           compare-ref: main
-          file: /Users/runner/work/android-patch/android-patch/app/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml
+          file: /Users/runner/work/android-patch/android-patch/app/build/reports/jacoco/JacocoCodeCoverage/JacocoCodeCoverage.xml
           format: jacoco
           parallel: false
