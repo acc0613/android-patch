@@ -23,9 +23,12 @@ jobs:
       # - name: Gradle generate code coverage report
       #   shell: bash
       #   run: ./gradlew createReleaseUnitTestCoverageReport
-      # - name: Gradle unit test
-      #   shell: bash
-      #   run: ./gradlew testReleaseUnitTest
+      - name: Gradle clean
+        shell: bash
+        run: ./gradlew clean
+      - name: Gradle unit test
+        shell: bash
+        run: ./gradlew testReleaseUnitTest
       - name: Gradle Jacoco report
         shell: bash
         run: ./gradlew jacocoTestReport
