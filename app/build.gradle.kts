@@ -2,24 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     jacoco
+    id("com.github.nbaztec.coveralls-jacoco") version "1.2.20"
 }
-
-//// Register the main JaCoCo task to later depend on the per-variant tasks
-//val jacocoTestReport = tasks.register("jacocoTestReport")
-//
-//tasks.withType<Test> {
-//    configure<JacocoTaskExtension> {
-//        isIncludeNoLocationClasses = true
-//    }
-//}
-
-//val exclusions = listOf(
-//    "**/R.class",
-//    "**/R\$*.class",
-//    "**/BuildConfig.*",
-//    "**/Manifest*.*",
-//    "**/*Test*.*"
-//)
 
 android {
     namespace = "com.example.androidpatch"
@@ -55,55 +39,6 @@ android {
     }
 }
 
-//tasks.withType(Test::class) {
-//    configure<JacocoTaskExtension> {
-//        isIncludeNoLocationClasses = true
-//        excludes = listOf("com.example.androidpatch.theme")
-//    }
-//}
-
-//tasks.withType<JacocoReport> {
-//    afterEvaluate {
-//        classDirectories.setFrom(files(classDirectories.files.map {
-//            fileTree(it).apply {
-//                exclude("com.example.androidpatch.theme")
-//            }
-//        }))
-//    }
-//}
-
-//tasks {
-//    register("Jacoco", JacocoReport::class) {
-//        val jacocoReportTask = this
-//
-//        group = "Coverage reports"
-//        val projects = coveredProjects
-//
-//        // Here we depend on the jacocoReport task that we created before
-//        val subTasks = projects.map { it.task<JacocoReport>("jacocoReport") }
-//        dependsOn(subTasks)
-//
-//        val subSourceDirs = subTasks.map { files(it.sourceDirectories) }
-//        additionalSourceDirs.setFrom(subSourceDirs)
-//        sourceDirectories.setFrom(subSourceDirs)
-//
-//        classDirectories.setFrom(subTasks.map { files(it.classDirectories) })
-//        executionData.setFrom(subTasks.map { files(it.executionData) })
-//
-//        reports {
-//            html.isEnabled = true
-//            html.destination = file("$buildDir/reports/jacoco/html")
-//
-//            xml.isEnabled = true
-//            xml.destination = file("$buildDir/reports/jacoco/jacocoFullReport.xml")
-//        }
-//
-//        doFirst {
-//            executionData.setFrom(files(executionData.filter { it.exists() }))
-//        }
-//    }
-//}
-
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -117,4 +52,4 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-apply("$rootDir/app/jacoco.gradle.kts")
+// apply("$rootDir/app/jacoco.gradle.kts")
