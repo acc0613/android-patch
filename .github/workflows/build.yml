@@ -1,6 +1,7 @@
 name: PR code coverage for main
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
