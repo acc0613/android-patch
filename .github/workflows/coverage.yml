@@ -20,23 +20,21 @@ jobs:
       - name: Gradle tasks
         shell: bash
         run: ./gradlew tasks --all
-      # - name: Gradle test
+      # - name: Gradle generate code coverage report
+      #   shell: bash
+      #   run: ./gradlew createReleaseUnitTestCoverageReport
+      # - name: Gradle unit test
       #   shell: bash
       #   run: ./gradlew testReleaseUnitTest
-      - name: Gradle generate code coverage report
+      - name: Gradle Jacoco report
         shell: bash
-        run: ./gradlew createReleaseUnitTestCoverageReport
+        run: ./gradlew jacocoTestReport
       - name: Coveralls Parallel
         id: cv-parallel
         uses: coverallsapp/github-action@v2
         with:
           base-path: /app/src/main/java
           compare-ref: main
-          file: /Users/runner/work/android-patch/android-patch/app/build/reports/coverage/test/release/report.xml
+          file: /Users/runner/work/android-patch/android-patch/app/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml
           format: jacoco
           parallel: false
-      # - name: Coveralls Finished
-      #   id: cv-finished
-      #   uses: coverallsapp/github-action@v2
-      #   with:
-      #     parallel-finished: true

@@ -4,6 +4,23 @@ plugins {
     jacoco
 }
 
+//// Register the main JaCoCo task to later depend on the per-variant tasks
+//val jacocoTestReport = tasks.register("jacocoTestReport")
+//
+//tasks.withType<Test> {
+//    configure<JacocoTaskExtension> {
+//        isIncludeNoLocationClasses = true
+//    }
+//}
+
+//val exclusions = listOf(
+//    "**/R.class",
+//    "**/R\$*.class",
+//    "**/BuildConfig.*",
+//    "**/Manifest*.*",
+//    "**/*Test*.*"
+//)
+
 android {
     namespace = "com.example.androidpatch"
     compileSdk = 34
@@ -28,6 +45,7 @@ android {
             enableUnitTestCoverage = true
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -37,6 +55,25 @@ android {
     }
 }
 
+//tasks.withType(Test::class) {
+//    configure<JacocoTaskExtension> {
+//        isIncludeNoLocationClasses = true
+//        excludes = listOf("com.example.androidpatch.theme")
+//    }
+//}
+
+//tasks.withType<JacocoReport> {
+//    afterEvaluate {
+//        classDirectories.setFrom(files(classDirectories.files.map {
+//            fileTree(it).apply {
+//                exclude("com.example.androidpatch.theme")
+//            }
+//        }))
+//    }
+//}
+
+
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -44,7 +81,10 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.ui.graphics.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
+apply("$rootDir/app/jacoco.gradle.kts")
